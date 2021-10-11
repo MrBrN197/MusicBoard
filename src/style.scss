@@ -8,3 +8,12 @@
 .display-flex {
   display: flex;
 }
+
+nav li {
+  list-style: none;
+  margin: 15px;
+}
+
+nav li a {
+  text-decoration: none;
+}
