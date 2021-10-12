@@ -44,7 +44,7 @@ module.exports = {
   },
   devtool: 'inline-source-map',
   devServer: {
-    watchFiles: '**/*.src',
+    watchFiles: 'src/**/*',
     static: './dist',
   },
 };

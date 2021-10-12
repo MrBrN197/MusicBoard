@@ -5,6 +5,10 @@
   margin: 0;
 }
 
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 .display-flex {
   display: flex;
 }
@@ -31,4 +35,9 @@ nav ul li {
 nav li a {
   text-decoration: none;
   font-size: 30px;
+}
+
+footer {
+  border-top: 1px solid black;
+  padding-block: 2rem;
 }
