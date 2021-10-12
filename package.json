@@ -11,6 +11,7 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.24.2",
     "hint": "^6.1.4",
+    "html-loader": "^0.5.5",
     "html-webpack-plugin": "^5.3.2",
     "jest": "^27.2.5",
     "postcss": "^8.3.9",
@@ -43,6 +44,5 @@
   "bugs": {
     "url": "https://github.com/MrBrN197/MusicBoard/issues"
   },
-  "homepage": "https://github.com/MrBrN197/MusicBoard#readme",
-  "dependencies": {}
+  "homepage": "https://github.com/MrBrN197/MusicBoard#readme"
 }

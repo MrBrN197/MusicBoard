@@ -13,13 +13,28 @@ body {
   display: flex;
 }
 
-nav li {
+nav {
+  justify-content: space-around;
+}
+
+#logo {
+  width: 80px;
+  height: 70px;
+}
+
+.margin-auto {
+  margin: auto;
+}
+
+nav ul li {
   list-style: none;
-  margin: 15px;
+  margin: 25px;
+  justify-content: space-around;
 }
 
 nav li a {
   text-decoration: none;
+  font-size: 30px;
 }
 
 footer {

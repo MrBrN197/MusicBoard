@@ -9,6 +9,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
     clean: true,
+    assetModuleFilename: 'assets/images/[hash][ext][query]'
   },
   plugins: [
     new HTMLWebpackPlugin({
@@ -25,6 +26,20 @@ module.exports = {
           'postcss-loader',
           'sass-loader'],
       },
+      
+      {
+        test: /\.(gif|png|jpe?g)$/,
+        type: 'asset/resource',
+      },
+      
+      {
+        test:/\.html$/,
+        use: [
+          'html-loader'
+        ]
+      },
+      
+
     ],
   },
   devtool: 'inline-source-map',
