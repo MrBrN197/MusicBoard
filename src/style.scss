@@ -26,8 +26,11 @@ nav {
   margin: auto;
 }
 
-nav ul li {
+ul {
   list-style: none;
+}
+
+nav ul li {
   margin: 25px;
   justify-content: space-around;
 }
@@ -40,4 +43,25 @@ nav li a {
 footer {
   border-top: 1px solid black;
   padding-block: 2rem;
+}
+
+// MODAL
+#modal {
+  position: fixed;
+  inset: 0;
+  background-color: royalblue;
+
+  .content {
+    background-color: gray;
+    width: 50vw;
+    height: 50vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+#modal.hidden {
+  display: none;
 }
