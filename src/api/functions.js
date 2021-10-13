@@ -14,7 +14,7 @@ const fakeData = {
   ],
   all_comments: [
     {
-      item_id: '',
+      item_id: '5Gso3d4CscCijv0lmajZWd',
       comments: [
         {
           creation_date: '2021-10-12',
@@ -47,7 +47,7 @@ apiPlaceholder.getAllLikes = async () => fakeData.likes;
 apiPlaceholder.getLikesFor = async (id) => fakeData.likes.find((l) => l.item_id === id).likes;
 apiPlaceholder.getCommentsFor = async (id) => {
   const user = fakeData.all_comments.find((c) => c.item_id === id);
-  if (!user) return false;
+  if (!user) return null;
   return user.comments;
 };
 
