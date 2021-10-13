@@ -52,6 +52,47 @@ export default ({ credentials, fetch }) => {
         return null;
       }
     },
+    async addLikeFor(id) {
+      try {
+        const response = await fetch(`${involvementBaseURL}apps/${appId}/likes`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            item_id: id,
+          }),
+        });
+
+        const createdStatus = await response.text();
+        if (createdStatus !== 'Created') throw Error;
+        return true;
+      } catch (err) {
+        console.log('ERROR:', err);
+        return false;
+      }
+    },
+    async addCommentFor(id, username, comment) {
+      try {
+        const response = await fetch(`${involvementBaseURL}apps/${appId}/comments`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            item_id: id,
+            username,
+            comment,
+          }),
+        });
+        const createdStatus = await response.text();
+        if (createdStatus !== 'Created') throw Error;
+        return true;
+      } catch (err) {
+        console.log('ERROR:', err);
+        return false;
+      }
+    },
   };
   return APIMethods;
 };

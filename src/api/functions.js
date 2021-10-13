@@ -18,14 +18,17 @@ apiPlaceholder.getNewReleases = async () => {
 };
 
 apiPlaceholder.getAllLikes = async () => [
-  { item_id: 'item_1', likes: 5 },
-  { item_id: 'item_2', likes: 5 },
-  { item_id: 'item_3', likes: 5 },
+  { item_id: 'item_1', likes: 20 },
+  { item_id: 'item_2', likes: 2 },
+  { item_id: 'item_3', likes: 7 },
 ];
-apiPlaceholder.getLikesFor = async () => 3;
+apiPlaceholder.getLikesFor = async () => Math.floor(Math.random() * 100);
 apiPlaceholder.getCommentsFor = async () => [
   { username: 'Mrs Girl', comment: 'This is the first comment', creation_date: '2021-10-12' },
   { username: 'Mr Man', comment: 'This is the second comment', creation_date: '2021-10-13' },
 ];
+
+apiPlaceholder.addCommentFor = async () => true;
+apiPlaceholder.addLikeFor = async () => true;
 
 export default apiPlaceholder;

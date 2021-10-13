@@ -12,5 +12,7 @@ const main = async () => {
   console.log('comments: ', comments);
   const likesFor = await API.getLikesFor('item_1');
   console.log('likesFor: ', likesFor);
+  console.log('post like:', await API.addLikeFor('item_1'));
+  console.log('added comment', await API.addCommentFor('item_1', 'Phillip', 'Hello This is a new comment!'));
 };
 main();
