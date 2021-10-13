@@ -9,12 +9,12 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.display-flex {
-  display: flex;
+.justify-content-space-around {
+  justify-content: space-around;
 }
 
-nav {
-  justify-content: space-around;
+.justify-content-space-between {
+  justify-content: space-between;
 }
 
 #logo {
@@ -26,8 +26,11 @@ nav {
   margin: auto;
 }
 
-nav ul li {
+ul {
   list-style: none;
+}
+
+nav ul li {
   margin: 25px;
   justify-content: space-around;
 }
@@ -35,6 +38,32 @@ nav ul li {
 nav li a {
   text-decoration: none;
   font-size: 30px;
+}
+
+#items-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.item-container {
+  margin: 30px;
+}
+
+.album-photo {
+  width: 100%;
+}
+
+.display-flex {
+  display: flex;
+}
+
+.heart {
+  float: right;
+  font-size: 30px;
+}
+
+.heart:hover {
+  color: red;
 }
 
 footer {
