@@ -4,6 +4,9 @@ export default ({ credentials, fetch }) => {
     'Content-Type': 'application/x-www-form-urlencoded',
   };
 
+  const involvementBaseURL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';
+  const appId = ''; // TODO:
+
   const APIMethods = {
     getNewReleases: async () => {
       const response = await fetch('https://api.spotify.com/v1/browse/new-releases', {
@@ -30,6 +33,24 @@ export default ({ credentials, fetch }) => {
           image: item.images[0].url,
         };
       });
+    },
+    async getAllLikes() {
+      const response = await fetch(`${involvementBaseURL}apps/${appId}/likes`);
+      const data = await response.text();
+      return JSON.parse(data);
+    },
+    async getLikesFor(id) {
+      const data = await this.getAllLikes();
+      return data.find((i) => i.item_id === id)?.likes;
+    },
+    async getCommentsFor(id) {
+      try {
+        const response = await fetch(`${involvementBaseURL}apps/${appId}/comments?item_id=${id}`);
+        const data = await response.json();
+        return data;
+      } catch {
+        return null;
+      }
     },
   };
   return APIMethods;
