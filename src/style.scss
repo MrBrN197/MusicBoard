@@ -9,6 +9,23 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+button {
+  border: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+input:not([type=submit]),
+textarea {
+  background-color: transparent;
+  border: none;
+}
+
 .display-flex {
   display: flex;
 }
@@ -26,8 +43,11 @@ nav {
   margin: auto;
 }
 
-nav ul li {
+ul {
   list-style: none;
+}
+
+nav ul li {
   margin: 25px;
   justify-content: space-around;
 }
