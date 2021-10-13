@@ -7,19 +7,23 @@ const populateList = (item) => {
   const div = document.createElement('DIV');
   div.setAttribute('class', 'item-container');
   const photo = document.createElement('IMG');
-  photo.setAttribute('src', item[3]);
+  photo.setAttribute('src', item.image);
   photo.setAttribute('class', 'album-photo');
   div.appendChild(photo);
   const heart = document.createElement('SPAN');
+  const likes = document.createElement('P');
   heart.innerHTML = '❤';
   heart.setAttribute('class', 'heart');
-  heart.addEventListener('click', () => API.addLikeFor(item[0]));
+  heart.addEventListener('click', async () => {
+    await API.addLikeFor(item.id);
+    const newLikes = await API.getLikesFor(item.id);
+    likes.innerHTML = `${newLikes} likes`;
+  });
   const title = document.createElement('P');
-  const likes = document.createElement('P');
-  const titleText = document.createTextNode(item[1]);
+  const titleText = document.createTextNode(item.artist);
   title.appendChild(titleText);
   title.appendChild(heart);
-  likes.innerHTML = `${item[4]} likes`;
+  likes.innerHTML = `${item.likes} likes`;
   const comments = document.createElement('BUTTON');
   comments.setAttribute('id', 'comments-button');
   comments.textContent = 'Comments';
@@ -36,8 +40,7 @@ const main = async () => {
   // await API.addLikeFor(id)
 
   data.forEach((element) => {
-    const itemDetails = Object.values(element);
-    populateList(itemDetails);
+    populateList(element);
   });
 };
 
