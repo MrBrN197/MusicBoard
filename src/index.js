@@ -34,6 +34,8 @@ const populateList = (item) => {
   itemsContainer.appendChild(div);
 };
 
+let total;
+
 const main = async () => {
   const data = await API.getNewReleases();
 
@@ -42,6 +44,14 @@ const main = async () => {
   data.forEach((element) => {
     populateList(element);
   });
+  total = data.length;
+};
+
+const showTotalOfItems = async () => {
+  const totalItems = document.getElementById('total-items');
+  await main;
+  totalItems.innerHTML = `(${total})`;
 };
 
 main();
+showTotalOfItems();
