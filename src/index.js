@@ -13,6 +13,7 @@ const populateList = (item) => {
   const heart = document.createElement('SPAN');
   heart.innerHTML = '❤';
   heart.setAttribute('class', 'heart');
+  heart.addEventListener('click', () => API.addLikeFor(item[0]));
   const title = document.createElement('P');
   const likes = document.createElement('P');
   const titleText = document.createTextNode(item[1]);
