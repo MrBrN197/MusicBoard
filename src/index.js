@@ -30,6 +30,7 @@ const populateList = (item) => {
   comments.addEventListener('click', () => Modal.showModal({
     image: item.image,
     id: item.id,
+    album_name: item.album_name,
   }));
   div.appendChild(title);
   div.appendChild(likes);
@@ -41,10 +42,10 @@ let total;
 
 const main = async () => {
   const data = await API.getNewReleases();
-
   // await API.addLikeFor(id)
 
   data.forEach((element) => {
+    console.log(element);
     populateList(element);
   });
   total = data.length;

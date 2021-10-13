@@ -2,7 +2,7 @@ import './modal.scss';
 import API from '../api/functions.js';
 
 export default {
-  showModal: async ({ image, id }) => {
+  showModal: async ({ album_name: albumName, image, id }) => {
     const modal = document.createElement('div');
     modal.id = 'modal';
     document.body.appendChild(modal);
@@ -15,7 +15,7 @@ export default {
         <div class="image">
           <img src="${image}" alt="album-art">
         </div>
-        <span class="heading">Space 3</span>
+        <span class="heading">${albumName}</span>
         <span class="sub-heading">Comments (2)</span>
         <ul class="comments-box">
 
