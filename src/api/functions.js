@@ -9,7 +9,21 @@ const apiPlaceholder = APIFactory({ credentials, fetch });
 
 const fakeData = {
   likes: data.items.map((item) => ({ item_id: item.id, likes: 0 })),
-  all_comments: data.items.map((item) => ({ item_id: item.id, comments: [] })),
+  all_comments: data.items.map((item) => ({
+    item_id: item.id,
+    comments: [
+      {
+        username: 'Jane',
+        comment: 'Hi this is the first comment',
+        created_at: '2021-10-13',
+      },
+      {
+        username: 'Michael',
+        comment: 'This is really great!',
+        created_at: '2021-10-12',
+      },
+    ],
+  })),
 };
 
 apiPlaceholder.getNewReleases = async () => data.items;
@@ -17,6 +31,7 @@ apiPlaceholder.getNewReleases = async () => data.items;
 apiPlaceholder.getAllLikes = async () => fakeData.likes;
 apiPlaceholder.getLikesFor = async (id) => fakeData.likes.find((l) => l.item_id === id).likes;
 apiPlaceholder.getCommentsFor = async (id) => {
+  console.log('id:', id);
   const user = fakeData.all_comments.find((c) => c.item_id === id);
   if (!user) return null;
   return user.comments;

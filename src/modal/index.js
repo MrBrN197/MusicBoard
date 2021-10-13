@@ -1,7 +1,8 @@
 import './modal.scss';
+import API from '../api/functions.js';
 
 export default {
-  showModal: () => {
+  showModal: async ({ id }) => {
     const modal = document.createElement('div');
     modal.id = 'modal';
     document.body.appendChild(modal);
@@ -16,9 +17,8 @@ export default {
         </div>
         <span class="heading">Space 3</span>
         <span class="sub-heading">Comments (2)</span>
-        <ul>
-          <li>03/11/2021 Alex: I'd love to buy it</li>
-          <li>03/12/2021 Mia: I love</li>
+        <ul class="comments-box">
+
         </ul>
         <span class="sub-heading">Add a comment</span>
         <form action="#">
@@ -28,6 +28,16 @@ export default {
         </form>
       </div>`;
     modal.innerHTML = innerHTML;
+    const commentsBox = modal.querySelector('.comments-box');
+
+    const comments = await API.getCommentsFor(id);
+    comments.forEach(({ created_at: createdAt, username, comment }) => {
+      const li = document.createElement('li');
+      const date = (new Date(createdAt)).toLocaleDateString();
+      li.textContent = `${date} ${username}: ${comment}`;
+      commentsBox.appendChild(li);
+    });
+
     modal.querySelector('.close-btn').addEventListener('click', () => {
       modal.remove();
     });

@@ -27,7 +27,10 @@ const populateList = (item) => {
   const comments = document.createElement('BUTTON');
   comments.setAttribute('id', 'comments-button');
   comments.textContent = 'Comments';
-  comments.addEventListener('click', () => Modal.showModal('showModal called!!'));
+  comments.addEventListener('click', () => Modal.showModal({
+    image: item.image,
+    id: item.id,
+  }));
   div.appendChild(title);
   div.appendChild(likes);
   div.appendChild(comments);
