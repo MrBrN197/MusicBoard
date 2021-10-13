@@ -1,5 +1,6 @@
 import './style.scss';
 import API from './api/functions.js';
+import showModal from './modal/index.js';
 
 const populateList = (item) => {
   const itemsContainer = document.getElementById('items-container');
@@ -19,7 +20,9 @@ const populateList = (item) => {
   title.appendChild(heart);
   likes.innerHTML = `${item[4]} likes`;
   const comments = document.createElement('BUTTON');
+  comments.setAttribute('id', 'comments-button');
   comments.textContent = 'Comments';
+  comments.addEventListener('click', () => showModal('showModal called!!'));
   div.appendChild(title);
   div.appendChild(likes);
   div.appendChild(comments);

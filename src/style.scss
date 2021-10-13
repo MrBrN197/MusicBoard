@@ -34,8 +34,11 @@ main {
   margin: auto;
 }
 
-nav ul li {
+ul {
   list-style: none;
+}
+
+nav ul li {
   margin: 25px;
   justify-content: space-around;
 }
