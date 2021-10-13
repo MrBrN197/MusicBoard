@@ -1,8 +1,7 @@
 import './modal.scss';
 
 export default {
-  showModal: (details) => {
-    console.log(details);
+  showModal: () => {
     const modal = document.createElement('div');
     modal.id = 'modal';
     document.body.appendChild(modal);

@@ -9,14 +9,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-main {
-
-}
-
-.display-flex {
-  display: flex;
-}
-
 .justify-content-space-around {
   justify-content: space-around;
 }
@@ -59,6 +51,10 @@ nav li a {
 
 .album-photo {
   width: 100%;
+}
+
+.display-flex {
+  display: flex;
 }
 
 .heart {
