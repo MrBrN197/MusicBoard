@@ -1,3 +1,5 @@
+import './modal.scss';
+
 export default {
   showModal: (details) => {
     const modal = document.createElement('div');
@@ -25,6 +27,7 @@ export default {
             <input type="submit" value="Comment">
         </form>
       </div>`;
+      // TODO: setup event listener for closing modal
     modal.innerHTML = innerHTML;
   },
   hideModal: () => document.getElementById('modal')?.remove(),
