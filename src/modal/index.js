@@ -64,7 +64,6 @@ export default {
       comments.forEach((commentDetails) => {
         addComment(commentsBox, commentDetails);
       });
-      console.log('submitted');
     });
 
     modal.querySelector('.close-btn').addEventListener('click', () => {
