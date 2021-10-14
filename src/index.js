@@ -28,7 +28,11 @@ const populateList = (item) => {
   const comments = document.createElement('BUTTON');
   comments.setAttribute('id', 'comments-button');
   comments.textContent = 'Comments';
-  comments.addEventListener('click', () => Modal.showModal('showModal called!!'));
+  comments.addEventListener('click', () => Modal.showModal({
+    image: item.image,
+    id: item.id,
+    album_name: item.album_name,
+  }));
   div.appendChild(title);
   div.appendChild(likes);
   div.appendChild(comments);
@@ -37,7 +41,6 @@ const populateList = (item) => {
 
 const main = async () => {
   const data = await API.getNewReleases();
-
   // await API.addLikeFor(id)
 
   data.forEach((element) => {

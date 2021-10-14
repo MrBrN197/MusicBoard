@@ -1,7 +1,9 @@
 import './modal.scss';
+import API from '../api/functions.js';
+import { calculateNumberOfComments, addComment } from './utils.js';
 
 export default {
-  showModal: () => {
+  showModal: async ({ album_name: albumName, image, id }) => {
     const modal = document.createElement('div');
     modal.id = 'modal';
     document.body.appendChild(modal);
@@ -12,22 +14,58 @@ export default {
           <i class="fas fa-times"></i>
         </div>
         <div class="image">
-          <img src="https://images.unsplash.com/photo-1632207191677-8446985f9d65?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1161&q=80" alt="album-art">
+          <img src="${image}" alt="album-art">
         </div>
-        <span class="heading">Space 3</span>
-        <span class="sub-heading">Comments (2)</span>
-        <ul>
-          <li>03/11/2021 Alex: I'd love to buy it</li>
-          <li>03/12/2021 Mia: I love</li>
+        <span class="heading">${albumName}</span>
+        <span class="sub-heading">Comments (0)</span>
+        <ul class="comments-box">
+
         </ul>
         <span class="sub-heading">Add a comment</span>
         <form action="#">
-            <input type="text" placeholder="Your name">
+            <input type="text" placeholder="Your name" name="username">
             <textarea name="insights" placeholder="Your insights"></textarea>
             <input type="submit" value="Comment">
         </form>
       </div>`;
     modal.innerHTML = innerHTML;
+    const commentsBox = modal.querySelector('.comments-box');
+
+    let comments = await API.getCommentsFor(id);
+
+    comments.forEach((commentDetails) => {
+      addComment(commentsBox, commentDetails);
+    });
+
+    let totalComments = calculateNumberOfComments(comments);
+    const subHeading = modal.querySelector('.sub-heading');
+    subHeading.textContent = `Comments (${totalComments})`;
+
+    const form = modal.querySelector('form');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const username = form.username.value;
+      const comment = form.insights.value;
+      if (!username || !comment) {
+        return;
+      }
+      form.username.value = '';
+      form.insights.value = '';
+      await API.addCommentFor(id, username, comment);
+
+      // update Comments counter
+      totalComments += 1;
+      subHeading.textContent = `Comments (${totalComments})`;
+
+      // clear commentsBox
+      commentsBox.innerHTML = '';
+      comments = await API.getCommentsFor(id);
+      comments.forEach((commentDetails) => {
+        addComment(commentsBox, commentDetails);
+      });
+    });
+
     modal.querySelector('.close-btn').addEventListener('click', () => {
       modal.remove();
     });

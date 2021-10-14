@@ -68,7 +68,6 @@ export default ({ credentials, fetch }) => {
         if (createdStatus !== 'Created') throw Error;
         return true;
       } catch (err) {
-        console.log('ERROR:', err);
         return false;
       }
     },
@@ -89,7 +88,6 @@ export default ({ credentials, fetch }) => {
         if (createdStatus !== 'Created') throw Error;
         return true;
       } catch (err) {
-        console.log('ERROR:', err);
         return false;
       }
     },
