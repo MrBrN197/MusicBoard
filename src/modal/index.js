@@ -31,7 +31,9 @@ export default {
     modal.innerHTML = innerHTML;
     const commentsBox = modal.querySelector('.comments-box');
 
+    console.log('id:', id);
     let comments = await API.getCommentsFor(id);
+    console.log('comments:', comments);
 
     comments.forEach((commentDetails) => {
       addComment(commentsBox, commentDetails);
@@ -54,16 +56,16 @@ export default {
       form.insights.value = '';
       await API.addCommentFor(id, username, comment);
 
-      // update Comments counter
-      totalComments += 1;
-      subHeading.textContent = `Comments (${totalComments})`;
-
       // clear commentsBox
       commentsBox.innerHTML = '';
       comments = await API.getCommentsFor(id);
+      console.log('new Comments:', comments);
       comments.forEach((commentDetails) => {
         addComment(commentsBox, commentDetails);
       });
+      // update Comments counter
+      totalComments += 1;
+      subHeading.textContent = `Comments (${totalComments})`;
     });
 
     modal.querySelector('.close-btn').addEventListener('click', () => {

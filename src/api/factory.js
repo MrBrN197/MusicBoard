@@ -5,7 +5,7 @@ export default ({ credentials, fetch }) => {
   };
 
   const involvementBaseURL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';
-  const appId = ''; // TODO:
+  const appId = 'oM0i9Hfjd7ZwqdP4izVj';
 
   const APIMethods = {
     getNewReleases: async () => {
@@ -47,9 +47,10 @@ export default ({ credentials, fetch }) => {
       try {
         const response = await fetch(`${involvementBaseURL}apps/${appId}/comments?item_id=${id}`);
         const data = await response.json();
+        if (data.error) throw Error;
         return data;
       } catch {
-        return null;
+        return [];
       }
     },
     async addLikeFor(id) {
