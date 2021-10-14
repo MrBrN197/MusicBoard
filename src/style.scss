@@ -5,8 +5,24 @@
   margin: 0;
 }
 
+@font-face {
+  font-family: 'Caveat';
+  src: url('./assets/fonts/Caveat-VariableFont_wght.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Akronim';
+  src: url('./assets/fonts/Akronim-Regular.ttf') format('ttf');
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+  -webkit-box-shadow: -1px 5px 24px 5px #000000; 
+  box-shadow: -1px 5px 24px 5px #000000;
+  background-color: black;
 }
 
 .justify-content-space-around {
@@ -18,12 +34,37 @@ body {
 }
 
 #logo {
+  transform: rotate(20deg);
   width: 80px;
   height: 70px;
+  margin-top: 6px;
 }
 
 .margin-auto {
   margin: auto;
+}
+
+.cursor-pointer,
+.album-photo,
+.heart,
+#comments-button {
+  cursor: pointer;
+}
+
+#comments-button {
+  color: white;
+  font-size: large;
+  background-color: rgb(240, 95, 95);
+  padding: 8px;
+  border-radius: 6px;
+  outline: lightseagreen;
+  border: none;
+  transition: background-color 1s, font-weight 0.5s;
+}
+
+#comments-button:hover {
+  background-color: red;
+  font-weight: 900;
 }
 
 ul {
@@ -37,19 +78,50 @@ nav ul li {
 
 nav li a {
   text-decoration: none;
+  font-family: Akronim, cursive;
+  font-weight: bolder;
   font-size: 30px;
+  font-style: italic;
+  display: inline-flex;
+  color:whitesmoke;
+  transition: color 1s;
+}
+
+nav li a:hover {
+  color:red;
 }
 
 #items-container {
   display: grid;
+  padding-left: 20rem;
+  padding-right: 20rem;
   grid-template-columns: repeat(3, 1fr);
 }
 
 .item-container {
+  -webkit-box-shadow: 2px 2px 27px -3px rgba(0,0,0,0.84); 
+  box-shadow: 2px 2px 27px -3px rgba(0,0,0,0.84);
   margin: 30px;
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 15px;
+  transition: box-shadow 1s;
 }
 
-.album-photo {
+.item-container:hover {
+  -webkit-box-shadow: 2px 2px 27px -3px rgba(255,69,69,0.84); 
+box-shadow: 2px 2px 27px -3px rgba(255,69,69,0.84);
+}
+
+.item-container p {
+  padding-right: 10%;
+  padding-left: 10%;
+  font-size: 1.3rem;
+  margin-top: 5px;
+  font-family: Caveat;
+}
+
+.album-photo,
+#comments-button {
   width: 100%;
 }
 
@@ -59,7 +131,7 @@ nav li a {
 
 .heart {
   float: right;
-  font-size: 30px;
+  font-size:3rem;
 }
 
 .heart:hover {
