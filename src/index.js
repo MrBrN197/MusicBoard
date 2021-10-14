@@ -34,8 +34,6 @@ const populateList = (item) => {
   itemsContainer.appendChild(div);
 };
 
-let total;
-
 const main = async () => {
   const data = await API.getNewReleases();
 
@@ -44,13 +42,18 @@ const main = async () => {
   data.forEach((element) => {
     populateList(element);
   });
-  total = data.length;
+};
+
+const countTotalItems = async () => {
+  await main;
+  return (document.querySelectorAll('.item-container').length);
 };
 
 const showTotalOfItems = async () => {
-  const totalItems = document.getElementById('total-items');
-  await main;
-  totalItems.innerHTML = `(${total})`;
+  countTotalItems().then((value) => {
+    const totalItems = document.getElementById('total-items');
+    totalItems.innerHTML = `(${value})`;
+  });
 };
 
 main();
