@@ -11,7 +11,7 @@ export default ({ credentials, fetch }) => {
         Authorization: `Bearer ${credentials.access_token}`,
         'Content-Type': 'application/x-www-form-urlencoded',
       };
-      const response = await fetch('https://api.spotify.com/v1/browse/new-releases', {
+      const response = await fetch('https://api.spotify.com/v1/browse/new-releases?limit=21', {
         method: 'GET',
         headers,
       });
