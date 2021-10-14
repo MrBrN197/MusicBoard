@@ -1,7 +1,7 @@
 import './style.scss';
 import API from './api/functions.js';
 import Modal from './modal/index.js';
-import countTotalItems from './countTotalItems';
+import countTotalItems from './countTotalItems.js';
 
 const populateList = (item) => {
   const itemsContainer = document.getElementById('items-container');
