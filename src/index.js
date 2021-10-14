@@ -1,6 +1,7 @@
 import './style.scss';
 import API from './api/functions.js';
 import Modal from './modal/index.js';
+import countTotalItems from './countTotalItems';
 
 const populateList = (item) => {
   const itemsContainer = document.getElementById('items-container');
@@ -44,17 +45,15 @@ const main = async () => {
   });
 };
 
-const countTotalItems = async () => {
-  await main;
-  return (document.querySelectorAll('.item-container').length);
-};
-
 const showTotalOfItems = async () => {
-  countTotalItems().then((value) => {
-    const totalItems = document.getElementById('total-items');
-    totalItems.innerHTML = `(${value})`;
-  });
+  const total = countTotalItems();
+  const totalItems = document.getElementById('total-items');
+  totalItems.innerHTML = `(${total})`;
 };
 
-main();
-showTotalOfItems();
+const initialize = async () => {
+  await main();
+  await showTotalOfItems();
+};
+
+initialize();
