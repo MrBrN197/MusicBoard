@@ -23,7 +23,7 @@ export default {
         </ul>
         <span class="sub-heading">Add a comment</span>
         <form action="#">
-            <input type="text" placeholder="Your name">
+            <input type="text" placeholder="Your name" name="username">
             <textarea name="insights" placeholder="Your insights"></textarea>
             <input type="submit" value="Comment">
         </form>
@@ -33,6 +33,7 @@ export default {
 
     const comments = await API.getCommentsFor(id);
     comments.forEach(({ created_at: createdAt, username, comment }) => {
+      console.log('data:', createdAt);
       const li = document.createElement('li');
       const date = (new Date(createdAt)).toLocaleDateString();
       li.textContent = `${date} ${username}: ${comment}`;
@@ -41,6 +42,19 @@ export default {
 
     const subHeading = modal.querySelector('.sub-heading');
     subHeading.textContent = `Comments (${calculateNumberOfComments(comments)})`;
+
+    const form = modal.querySelector('form');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const username = form.username.value;
+      const comment = form.insights.value;
+      if (!username || !comment) {
+        return;
+      }
+      API.addCommentFor(id, username, comment);
+      console.log('submitted');
+    });
 
     modal.querySelector('.close-btn').addEventListener('click', () => {
       modal.remove();
