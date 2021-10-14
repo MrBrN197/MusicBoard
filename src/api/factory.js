@@ -1,35 +1,33 @@
 export default ({ credentials, fetch }) => {
-  const headers = {
-    Authorization: `Bearer ${credentials.access_token}`,
-    'Content-Type': 'application/x-www-form-urlencoded',
-  };
+  credentials.access_token = 'BQD81oYEnQ3ZhNT4A9q89jR6OW3a6f4h_sq4g6U8x4WqrkmGJAb--OepFWHlLVwYAHDB0H2JqRmiNawazis';
 
   const involvementBaseURL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';
   const appId = 'oM0i9Hfjd7ZwqdP4izVj';
 
   const APIMethods = {
-    getNewReleases: async () => {
+    async getNewReleases() {
+      // await accessTokenPromise;
+      const headers = {
+        Authorization: `Bearer ${credentials.access_token}`,
+        'Content-Type': 'application/x-www-form-urlencoded',
+      };
       const response = await fetch('https://api.spotify.com/v1/browse/new-releases', {
         method: 'GET',
         headers,
       });
       const data = await response.json();
 
+      const allAlbumLikes = await this.getAllLikes();
+
       return data.albums.items.map((item) => {
-        const artists = item.artists.map((artist) => ({
-          href: artist.href,
-          name: artist.name,
-          type: artist.type,
-          id: artist.id,
-          artist: artist.name,
-        }));
+        const artist = item.artists.map((artist) => artist.name).join(', ');
+        const likes = allAlbumLikes.find((album) => album.item_id === item.id)?.likes || 0;
 
         return {
           id: item.id,
-          name: item.name,
-          artists,
-          type: item.type,
-          album_type: item.album_type,
+          album_name: item.name,
+          artist,
+          likes,
           image: item.images[0].url,
         };
       });
@@ -47,7 +45,9 @@ export default ({ credentials, fetch }) => {
       try {
         const response = await fetch(`${involvementBaseURL}apps/${appId}/comments?item_id=${id}`);
         const data = await response.json();
-        if (data.error) throw Error;
+        if (data.error) {
+          throw Error;
+        }
         return data;
       } catch {
         return [];

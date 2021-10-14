@@ -31,9 +31,7 @@ export default {
     modal.innerHTML = innerHTML;
     const commentsBox = modal.querySelector('.comments-box');
 
-    console.log('id:', id);
     let comments = await API.getCommentsFor(id);
-    console.log('comments:', comments);
 
     comments.forEach((commentDetails) => {
       addComment(commentsBox, commentDetails);
@@ -59,7 +57,6 @@ export default {
       // clear commentsBox
       commentsBox.innerHTML = '';
       comments = await API.getCommentsFor(id);
-      console.log('new Comments:', comments);
       comments.forEach((commentDetails) => {
         addComment(commentsBox, commentDetails);
       });

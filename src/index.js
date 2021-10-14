@@ -41,7 +41,6 @@ const populateList = (item) => {
 
 const main = async () => {
   const data = await API.getNewReleases();
-  // await API.addLikeFor(id)
 
   data.forEach((element) => {
     populateList(element);
