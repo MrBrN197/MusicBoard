@@ -22,6 +22,11 @@ const fakeData = {
         comment: 'This is really great!',
         created_at: '2021-10-12',
       },
+      {
+        username: 'Evelyn',
+        comment: 'Wow Amazing!!!!',
+        created_at: '2021-10-14',
+      },
     ],
   })),
 };
@@ -31,7 +36,6 @@ apiPlaceholder.getNewReleases = async () => data.items;
 apiPlaceholder.getAllLikes = async () => fakeData.likes;
 apiPlaceholder.getLikesFor = async (id) => fakeData.likes.find((l) => l.item_id === id).likes;
 apiPlaceholder.getCommentsFor = async (id) => {
-  console.log('id:', id);
   const user = fakeData.all_comments.find((c) => c.item_id === id);
   if (!user) return null;
   return user.comments;

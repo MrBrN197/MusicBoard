@@ -1,5 +1,6 @@
 import './modal.scss';
 import API from '../api/functions.js';
+import calculateNumberOfComments from './utils.js';
 
 export default {
   showModal: async ({ album_name: albumName, image, id }) => {
@@ -16,7 +17,7 @@ export default {
           <img src="${image}" alt="album-art">
         </div>
         <span class="heading">${albumName}</span>
-        <span class="sub-heading">Comments (2)</span>
+        <span class="sub-heading">Comments (0)</span>
         <ul class="comments-box">
 
         </ul>
@@ -37,6 +38,9 @@ export default {
       li.textContent = `${date} ${username}: ${comment}`;
       commentsBox.appendChild(li);
     });
+
+    const subHeading = modal.querySelector('.sub-heading');
+    subHeading.textContent = `Comments (${calculateNumberOfComments(comments)})`;
 
     modal.querySelector('.close-btn').addEventListener('click', () => {
       modal.remove();

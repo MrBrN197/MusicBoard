@@ -45,7 +45,6 @@ const main = async () => {
   // await API.addLikeFor(id)
 
   data.forEach((element) => {
-    console.log(element);
     populateList(element);
   });
   total = data.length;
