@@ -1,6 +1,6 @@
 import './modal.scss';
 import API from '../api/functions.js';
-import calculateNumberOfComments from './utils.js';
+import { calculateNumberOfComments, addComment } from './utils.js';
 
 export default {
   showModal: async ({ album_name: albumName, image, id }) => {
@@ -31,28 +31,37 @@ export default {
     modal.innerHTML = innerHTML;
     const commentsBox = modal.querySelector('.comments-box');
 
-    const comments = await API.getCommentsFor(id);
-    comments.forEach(({ created_at: createdAt, username, comment }) => {
-      console.log('data:', createdAt);
-      const li = document.createElement('li');
-      const date = (new Date(createdAt)).toLocaleDateString();
-      li.textContent = `${date} ${username}: ${comment}`;
-      commentsBox.appendChild(li);
+    let comments = await API.getCommentsFor(id);
+
+    comments.forEach((commentDetails) => {
+      addComment(commentsBox, commentDetails);
     });
 
+    let totalComments = calculateNumberOfComments(comments);
     const subHeading = modal.querySelector('.sub-heading');
-    subHeading.textContent = `Comments (${calculateNumberOfComments(comments)})`;
+    subHeading.textContent = `Comments (${totalComments})`;
 
     const form = modal.querySelector('form');
 
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const username = form.username.value;
       const comment = form.insights.value;
       if (!username || !comment) {
         return;
       }
-      API.addCommentFor(id, username, comment);
+      await API.addCommentFor(id, username, comment);
+
+      // update Comments counter
+      totalComments += 1;
+      subHeading.textContent = `Comments (${totalComments})`;
+
+      // clear commentsBox
+      commentsBox.innerHTML = '';
+      comments = await API.getCommentsFor(id);
+      comments.forEach((commentDetails) => {
+        addComment(commentsBox, commentDetails);
+      });
       console.log('submitted');
     });
 

@@ -45,7 +45,7 @@ apiPlaceholder.addCommentFor = async (id, username, comment) => {
   const user = fakeData.all_comments.find((c) => c.item_id === id);
   if (!user) return false;
   user.comments.push({
-    creation_date: '2021-10-13',
+    created_at: '2021-10-13',
     username,
     comment,
   });
