@@ -15,17 +15,17 @@ const fakeData = {
       {
         username: 'Jane',
         comment: 'Hi this is the first comment',
-        created_at: '2021-10-13',
+        creation_date: '2021-10-13',
       },
       {
         username: 'Michael',
         comment: 'This is really great!',
-        created_at: '2021-10-12',
+        creation_date: '2021-10-12',
       },
       {
         username: 'Evelyn',
         comment: 'Wow Amazing!!!!',
-        created_at: '2021-10-14',
+        creation_date: '2021-10-14',
       },
     ],
   })),
@@ -45,7 +45,7 @@ apiPlaceholder.addCommentFor = async (id, username, comment) => {
   const user = fakeData.all_comments.find((c) => c.item_id === id);
   if (!user) return false;
   user.comments.push({
-    created_at: '2021-10-13',
+    creation_date: '2021-10-13',
     username,
     comment,
   });
