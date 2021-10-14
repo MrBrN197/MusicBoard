@@ -50,6 +50,8 @@ export default {
       if (!username || !comment) {
         return;
       }
+      form.username.value = '';
+      form.insights.value = '';
       await API.addCommentFor(id, username, comment);
 
       // update Comments counter
