@@ -1,6 +1,7 @@
 import './style.scss';
 import API from './api/functions.js';
 import Modal from './modal/index.js';
+import countTotalItems from './countTotalItems';
 
 const populateList = (item) => {
   const itemsContainer = document.getElementById('items-container');
@@ -34,8 +35,6 @@ const populateList = (item) => {
   itemsContainer.appendChild(div);
 };
 
-let total;
-
 const main = async () => {
   const data = await API.getNewReleases();
 
@@ -44,14 +43,17 @@ const main = async () => {
   data.forEach((element) => {
     populateList(element);
   });
-  total = data.length;
 };
 
 const showTotalOfItems = async () => {
+  const total = countTotalItems();
   const totalItems = document.getElementById('total-items');
-  await main;
   totalItems.innerHTML = `(${total})`;
 };
 
-main();
-showTotalOfItems();
+const initialize = async () => {
+  await main();
+  await showTotalOfItems();
+};
+
+initialize();
