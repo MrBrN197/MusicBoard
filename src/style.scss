@@ -173,7 +173,7 @@ footer {
   }
 }
 
-@media screen and (max-width: 552px){
+@media screen and (max-width: 650px){
 
   #big-nav {
     display: none;
@@ -184,6 +184,11 @@ footer {
     color: whitesmoke;
     font-size: 40px;
   }
+
+
+}
+
+@media screen and (max-width: 552px){
 
   #items-container {
     padding: 0;
