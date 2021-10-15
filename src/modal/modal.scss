@@ -6,9 +6,12 @@
 
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(30px);
-  transition: all 200ms;
+  background-color: rgba(255, 255, 255, 0.9);
+
+  @supports (backdrop-filter: none) {
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(30px);
+  }
 
   ::-webkit-scrollbar {
     width: 0.4rem;
@@ -56,6 +59,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 4rem 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 
     .close-btn {
       position: absolute;
