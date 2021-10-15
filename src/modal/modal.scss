@@ -6,7 +6,9 @@
 
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(30px);
+  transition: all 200ms;
 
   ::-webkit-scrollbar {
     width: 0.4rem;
