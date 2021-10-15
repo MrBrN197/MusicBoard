@@ -1,6 +1,5 @@
 export const calculateNumberOfComments = (comments) => comments.length;
 export const addComment = (container, { creation_date: createdAt, username, comment }) => {
-  console.log(container);
   const li = document.createElement('li');
   li.classList.add('comment-box');
 
