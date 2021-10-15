@@ -1,6 +1,6 @@
 # Music Board
 
-This is a website that shows the trending Music Albums and allows users to like and make comments about each Album
+This is a website that shows the trending Music Albums by using the Spotify API and Microverse involvment API, It allows users to like and make comments about each Album/Song
 
 ## [Live Link](https://mrbrn197.github.io/MusicBoard/dist)
 
@@ -58,3 +58,6 @@ Feel free to check the [issues page](../../issues/).
 Give a ⭐️ if you like this project!
 
 ## Acknowledgments
+
+- Spotify API
+- Involvement API
