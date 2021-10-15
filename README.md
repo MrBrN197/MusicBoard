@@ -2,7 +2,7 @@
 
 This is a website that shows the trending Music Albums by using the Spotify API and Microverse involvment API, It allows users to like and make comments about each Album/Song
 
-## [Live Link](https://mrbrn197.github.io/MusicBoard/dist)
+## 🔗 [Live Link](https://mrbrn197.github.io/MusicBoard/dist)
 
 ## Built With
 
@@ -10,6 +10,9 @@ This is a website that shows the trending Music Albums by using the Spotify API 
 - SCSS
 - Jest
 - Webpack
+- Eslint
+- Webhint
+- Stylelint
 
 ## Getting Started
 
