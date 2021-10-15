@@ -18,18 +18,18 @@ export default {
         </div>
         <span class="heading">${albumName}</span>
         <span class="sub-heading">Comments (0)</span>
-        <ul class="comments-box">
+        <ul class="comments">
 
         </ul>
         <span class="sub-heading">Add a comment</span>
-        <form action="#">
+        <form action="#" autocomplete="off">
             <input type="text" placeholder="Your name" name="username">
             <textarea name="insights" placeholder="Your insights"></textarea>
             <input type="submit" value="Comment">
         </form>
       </div>`;
     modal.innerHTML = innerHTML;
-    const commentsBox = modal.querySelector('.comments-box');
+    const commentsBox = modal.querySelector('.comments');
 
     let comments = await API.getCommentsFor(id);
 
@@ -54,16 +54,15 @@ export default {
       form.insights.value = '';
       await API.addCommentFor(id, username, comment);
 
-      // update Comments counter
-      totalComments += 1;
-      subHeading.textContent = `Comments (${totalComments})`;
-
       // clear commentsBox
       commentsBox.innerHTML = '';
       comments = await API.getCommentsFor(id);
       comments.forEach((commentDetails) => {
         addComment(commentsBox, commentDetails);
       });
+      // update Comments counter
+      totalComments += 1;
+      subHeading.textContent = `Comments (${totalComments})`;
     });
 
     modal.querySelector('.close-btn').addEventListener('click', () => {
