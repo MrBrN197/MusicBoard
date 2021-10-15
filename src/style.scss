@@ -139,6 +139,17 @@ box-shadow: 2px 2px 27px -3px rgba(255,69,69,0.84);
 }
 
 footer {
-  border-top: 1px solid black;
+  padding: 30px;
+  color:ivory;
+  font-weight: bolder;
+  font-size: 1.1rem;
   padding-block: 2rem;
+  background: rgb(170,126,118);
+  background: linear-gradient(18deg, rgba(170,126,118,1) 0%, rgba(201,119,111,1) 0%, rgba(147,75,75,0.5998774509803921) 100%);
+}
+
+footer-image {
+  float: right;
+  transform: rotate(100deg);
+  width: 50px;
 }
