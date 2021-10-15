@@ -148,8 +148,14 @@ footer {
   background: linear-gradient(18deg, rgba(170,126,118,1) 0%, rgba(201,119,111,1) 0%, rgba(147,75,75,0.5998774509803921) 100%);
 }
 
-footer-image {
+.footer-text {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.footer-image {
   float: right;
-  transform: rotate(100deg);
-  width: 50px;
+  transform: rotate(40deg);
+  height: 60px;
+  width: 60px;
 }
