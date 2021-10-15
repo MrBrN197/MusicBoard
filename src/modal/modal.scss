@@ -50,6 +50,7 @@
       margin: 1rem;
       cursor: pointer;
       border-radius: 0.2rem;
+      transition: all  200ms;
 
       &:hover {
         background-color: rgb(179, 179, 179);
@@ -80,25 +81,42 @@
       border-radius: 0.2rem;
     }
 
-    .comments-box {
-      height: 20%;
+    .comments {
+      $bg-color: $dark-black;
+
       width: 80%;
-      border: 1px solid rgb(128, 113, 113);
-      // border: 1px solid rgb(250, 72, 72);
       border-radius: 0.2rem;
       flex-shrink: 0;
       overflow: auto;
-      background-color: rgba(0, 0, 0, 0.1);
-      // padding: 1.4rem 0.8rem;
+      background-color: $bg-color;
       margin-bottom: 2rem;
+      border-top: 2px solid darken($dark-black, 2%);
 
-      li {
-        margin-block: 0.2rem;
-        padding: 0.4rem;
+      .comment-box {
+        padding: 1rem;
+        padding-left: 2rem;
+
+        .details {
+          .username-date {
+            .user {
+              color: $white;
+            }
+
+            .date {
+              font-size: 0.8rem;
+              color: darken($white, 20%);
+            }
+          }
+
+          .comment {
+            padding-top: 0.8rem;
+            padding-left: 0.2rem;
+          }
+        }
       }
 
-      li:nth-child(even) {
-        background-color: rgb(58, 58, 58);
+      .comment-box:nth-child(even) {
+        background-color: lighten($bg-color, 4%);
       }
     }
 

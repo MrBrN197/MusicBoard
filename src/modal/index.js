@@ -18,7 +18,7 @@ export default {
         </div>
         <span class="heading">${albumName}</span>
         <span class="sub-heading">Comments (0)</span>
-        <ul class="comments-box">
+        <ul class="comments">
 
         </ul>
         <span class="sub-heading">Add a comment</span>
@@ -29,7 +29,7 @@ export default {
         </form>
       </div>`;
     modal.innerHTML = innerHTML;
-    const commentsBox = modal.querySelector('.comments-box');
+    const commentsBox = modal.querySelector('.comments');
 
     let comments = await API.getCommentsFor(id);
 
