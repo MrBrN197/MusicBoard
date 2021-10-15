@@ -1,6 +1,7 @@
 /* eslint-disable */
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -15,6 +16,7 @@ module.exports = {
     new HTMLWebpackPlugin({
       template: './src/template.html',
     }),
+    new FaviconsWebpackPlugin('./src/assets/images/logo.png'),
   ],
   module: {
     rules: [
@@ -38,8 +40,10 @@ module.exports = {
           'html-loader'
         ]
       },
-      
-
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+       type: 'asset/resource',
+      },
     ],
   },
   devtool: 'inline-source-map',
