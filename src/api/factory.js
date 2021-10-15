@@ -4,9 +4,22 @@ export default ({ credentials, fetch }) => {
   const involvementBaseURL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';
   const appId = 'oM0i9Hfjd7ZwqdP4izVj';
 
+  const accessTokenPromise = fetch('https://accounts.spotify.com/api/token', {
+    method: 'POST',
+    headers: {
+      Authorization: `Basic ${btoa(`${credentials.cid}:${credentials.cs}`)}`,
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: 'grant_type=client_credentials',
+  })
+    .then((resp) => resp.json())
+    .then((data) => {
+      credentials.access_token = data.access_token;
+    });
+
   const APIMethods = {
     async getNewReleases() {
-      // await accessTokenPromise;
+      await accessTokenPromise;
       const headers = {
         Authorization: `Bearer ${credentials.access_token}`,
         'Content-Type': 'application/x-www-form-urlencoded',
