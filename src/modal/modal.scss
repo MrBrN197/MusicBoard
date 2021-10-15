@@ -106,7 +106,8 @@
 
       width: 80%;
       border-radius: 0.2rem;
-      flex-shrink: 0;
+      flex: 1 0 auto;
+      min-height: 5rem;
       overflow: auto;
       background-color: $bg-color;
       margin-bottom: 2rem;
