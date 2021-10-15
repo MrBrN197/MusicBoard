@@ -22,7 +22,7 @@ export default {
 
         </ul>
         <span class="sub-heading">Add a comment</span>
-        <form action="#">
+        <form action="#" autocomplete="off">
             <input type="text" placeholder="Your name" name="username">
             <textarea name="insights" placeholder="Your insights"></textarea>
             <input type="submit" value="Comment">
