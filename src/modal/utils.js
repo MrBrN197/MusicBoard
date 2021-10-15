@@ -5,12 +5,11 @@ export const addComment = (container, { creation_date: createdAt, username, comm
   li.classList.add('comment-box');
 
   const date = (new Date(createdAt)).toLocaleDateString();
-  // li.textContent = `${date} ${username}: ${comment}`;
   const innerHTML = `
     <div class="details">
       <div class="username-date">
         <strong clas="username">${username}</strong>
-        <span class="date">1 year ago</span>
+        <span class="date">${date}</span>
       </div>
       <div class="comment">
         <span>${comment}</span>

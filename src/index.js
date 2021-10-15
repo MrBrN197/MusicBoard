@@ -54,15 +54,8 @@ const showTotalOfItems = async () => {
 };
 
 const initialize = async () => {
-  // await main();
-  // await showTotalOfItems();
-  Modal.showModal({
-    album_name: 'Easy On Me',
-    image: 'https://i.scdn.co/image/ab67616d0000b273e202fbaf5e7f436d8fc47c19',
-    id: '224jZ4sUX7OhAuMwaxp86S',
-    likes: 0,
-    artist: 'Adele',
-  });
+  await main();
+  await showTotalOfItems();
 };
 
 initialize();
