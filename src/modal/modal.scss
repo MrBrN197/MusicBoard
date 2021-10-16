@@ -1,0 +1,197 @@
+// MODAL
+#modal {
+  $white: rgb(219, 219, 219);
+  $black: rgb(46, 46, 46);
+  $dark-black: #1f1f1f;
+
+  position: fixed;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+
+  @supports (backdrop-filter: none) {
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(30px);
+  }
+
+  ::-webkit-scrollbar {
+    width: 0.4rem;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(250, 72, 72);
+    border-radius: 100vw;
+  }
+
+  button {
+    border: none;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  input:not([type=submit]),
+  textarea {
+    background-color: transparent;
+    border: none;
+  }
+
+  .content {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    background-color: $black;
+    border-radius: 1rem;
+    color: $white;
+    width: 50vw;
+    height: 80vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 4rem 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+    .close-btn {
+      position: absolute;
+      right: 0;
+      top: 0;
+      padding: 0.8rem;
+      font-size: 1.2rem;
+      margin: 1rem;
+      cursor: pointer;
+      border-radius: 0.2rem;
+      transition: all  200ms;
+
+      &:hover {
+        background-color: rgba($white, 0.2);
+        color: rgb(250, 72, 72);
+      }
+    }
+
+    .image {
+      border-radius: 1rem;
+      overflow: hidden;
+      width: 80%;
+      flex-shrink: 1;
+      min-height: 0;
+    }
+
+    .heading {
+      font-weight: bolder;
+      color: whitesmoke;
+      font-size: 1.4rem;
+      padding: 0.4rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .sub-heading {
+      color: rgb(250, 72, 72);
+      background-color: lighten($dark-black, 10%);
+      padding: 0.6rem;
+      border-radius: 0.2rem;
+    }
+
+    .comments {
+      $bg-color: $dark-black;
+
+      width: 80%;
+      border-radius: 0.2rem;
+      flex: 1 0 auto;
+      min-height: 5rem;
+      overflow: auto;
+      background-color: $bg-color;
+      margin-bottom: 2rem;
+      border-top: 2px solid darken($dark-black, 2%);
+
+      .comment-box {
+        padding: 1rem;
+        padding-left: 2rem;
+
+        .details {
+          .username-date {
+            .user {
+              color: $white;
+            }
+
+            .date {
+              font-size: 0.8rem;
+              color: darken($white, 20%);
+            }
+          }
+
+          .comment {
+            padding-top: 0.8rem;
+            padding-left: 0.2rem;
+          }
+        }
+      }
+
+      .comment-box:nth-child(even) {
+        background-color: lighten($bg-color, 4%);
+      }
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+      width: 80%;
+
+      textarea {
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      input,
+      textarea {
+        border-radius: 0.2rem;
+        padding: 0.6rem 0.8rem;
+        font-size: 1rem;
+        background-color: $dark-black;
+        color: $white;
+        transition: all 420ms;
+
+        &::placeholder {
+          color: $white;
+          opacity: 0.3;
+        }
+
+        &:focus {
+          outline: none;
+          background-color: darken($dark-black, 2%);
+        }
+      }
+
+      input[type=submit] {
+        font-size: 1rem;
+        padding: 0.8rem 1rem;
+        cursor: pointer;
+        border: 2px solid rgb(250, 72, 72);
+        background-color: transparent;
+        color: rgb(250, 72, 72);
+        margin-block: 0.4rem;
+        transition: background-color 120ms;
+
+        &:hover {
+          color: $white;
+          background-color: rgb(250, 72, 72);
+        }
+      }
+    }
+  }
+}
+
+#modal.hidden {
+  display: none;
+}
