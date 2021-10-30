@@ -1,8 +1,8 @@
 import APIFactory from './factory.js';
 import credentials from './credentials.js';
 
-import newReleases from './releases.json';
-import album from './album.json';
+// import newReleases from './releases.json';
+// import album from './album.json';
 
 // const fetch = (url) => Promise.resolve(
 //   {
