@@ -28,6 +28,12 @@ const populateList = (item) => {
   const comments = document.createElement('BUTTON');
   comments.setAttribute('id', 'comments-button');
   comments.textContent = 'Comments';
+  Modal.showModal({
+    image: item.image,
+    id: item.id,
+    album_name: item.album_name,
+  });
+
   comments.addEventListener('click', () => Modal.showModal({
     image: item.image,
     id: item.id,

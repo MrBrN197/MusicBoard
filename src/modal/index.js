@@ -82,6 +82,7 @@ export default {
     console.log(albumDetails.preview_url);
     if (albumDetails.preview_url) {
       const audio = new Audio(albumDetails.preview_url);
+      modal.appendChild(audio);
       audio.volume = 0.2;
       let playing = false;
       const playBtn = modal.querySelector('.play-btn i');
