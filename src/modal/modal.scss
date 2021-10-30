@@ -84,6 +84,30 @@
       width: 80%;
       flex-shrink: 1;
       min-height: 0;
+      position: relative;
+
+      .play-btn {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+
+        i {
+          font-size: 6rem;
+          cursor: pointer;
+          opacity: 0;
+          transition: opacity 140ms;
+        }
+        &:hover {
+          i {
+            opacity: 1;
+          }
+        }
+
+      }
+
     }
 
     .heading {

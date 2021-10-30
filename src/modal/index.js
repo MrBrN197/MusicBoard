@@ -19,6 +19,9 @@ export default {
         </div>
         <div class="image">
           <img src="${image}" alt="album-art">
+          <div class="play-btn">
+            <i class="fas fa-play-circle"></i>
+          </div>
         </div>
         <span class="heading">${albumName}</span>
         <span class="sub-heading">Comments (0)</span>
