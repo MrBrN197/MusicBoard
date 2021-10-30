@@ -2,8 +2,12 @@ import './modal.scss';
 import API from '../api/functions.js';
 import { calculateNumberOfComments, addComment } from './utils.js';
 
+let modalActive = false;
+
 export default {
   showModal: async ({ album_name: albumName, image, id }) => {
+    if (modalActive) return;
+    modalActive = true;
     const modal = document.createElement('div');
     modal.id = 'modal';
     document.body.appendChild(modal);
@@ -66,8 +70,11 @@ export default {
     });
 
     modal.querySelector('.close-btn').addEventListener('click', () => {
+      modalActive = false;
       modal.remove();
     });
+  hideModal: () => {
+    modalActive = false;
+    document.getElementById('modal')?.remove();
   },
-  hideModal: () => document.getElementById('modal')?.remove(),
 };
