@@ -76,6 +76,24 @@ export default {
       modalActive = false;
       modal.remove();
     });
+
+    const audio = new Audio('https://p.scdn.co/mp3-preview/c5014be1aeb2ab5f129e2789eff3ea87ecd5027f?cid=03c93fbd8ce74b51b2899d8beee8d177');
+    audio.volume = 0.2;
+    let playing = false;
+    const playBtn = modal.querySelector('.play-btn i');
+    playBtn.addEventListener('click', () => {
+      if (!playing) {
+        audio.play();
+        playBtn.classList.remove('fa-play-circle');
+        playBtn.classList.add('fa-pause-circle');
+      } else {
+        audio.pause();
+        playBtn.classList.remove('fa-pause-circle');
+        playBtn.classList.add('fa-play-circle');
+      }
+      playing = !playing;
+    });
+  },
   hideModal: () => {
     modalActive = false;
     document.getElementById('modal')?.remove();
