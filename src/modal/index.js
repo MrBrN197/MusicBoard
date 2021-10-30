@@ -80,12 +80,12 @@ export default {
     // Fetch preview audio
     const albumDetails = await API.getAlbum(id);
     console.log(albumDetails.preview_url);
+    const playBtn = modal.querySelector('.play-btn i');
     if (albumDetails.preview_url) {
       const audio = new Audio(albumDetails.preview_url);
       modal.appendChild(audio);
       audio.volume = 0.2;
       let playing = false;
-      const playBtn = modal.querySelector('.play-btn i');
       playBtn.addEventListener('click', () => {
         if (!playing) {
           audio.play();
@@ -102,6 +102,10 @@ export default {
         playBtn.classList.remove('fa-pause-circle');
         playBtn.classList.add('fa-play-circle');
         playing = false;
+      });
+    } else {
+      playBtn.addEventListener('click', () => {
+        alert('This track does not have an audio preview 😥, try another one');
       });
     }
   },
