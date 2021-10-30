@@ -93,6 +93,11 @@ export default {
       }
       playing = !playing;
     });
+    audio.addEventListener('ended', () => {
+      playBtn.classList.remove('fa-pause-circle');
+      playBtn.classList.add('fa-play-circle');
+      playing = false;
+    });
   },
   hideModal: () => {
     modalActive = false;
