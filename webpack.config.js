@@ -2,6 +2,7 @@
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
   mode: 'development',
