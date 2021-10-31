@@ -2,8 +2,12 @@ import './modal.scss';
 import API from '../api/functions.js';
 import { calculateNumberOfComments, addComment } from './utils.js';
 
+let modalActive = false;
+
 export default {
   showModal: async ({ album_name: albumName, image, id }) => {
+    if (modalActive) return;
+    modalActive = true;
     const modal = document.createElement('div');
     modal.id = 'modal';
     document.body.appendChild(modal);
@@ -15,6 +19,9 @@ export default {
         </div>
         <div class="image">
           <img src="${image}" alt="album-art">
+          <div class="play-btn">
+            <i class="fas fa-play-circle"></i>
+          </div>
         </div>
         <span class="heading">${albumName}</span>
         <span class="sub-heading">Comments (0)</span>
@@ -66,8 +73,44 @@ export default {
     });
 
     modal.querySelector('.close-btn').addEventListener('click', () => {
+      modalActive = false;
       modal.remove();
     });
+
+    // Fetch preview audio
+    const albumDetails = await API.getAlbum(id);
+    console.log(albumDetails.preview_url);
+    const playBtn = modal.querySelector('.play-btn i');
+    if (albumDetails.preview_url) {
+      const audio = new Audio(albumDetails.preview_url);
+      modal.appendChild(audio);
+      audio.volume = 0.2;
+      let playing = false;
+      playBtn.addEventListener('click', () => {
+        if (!playing) {
+          audio.play();
+          playBtn.classList.remove('fa-play-circle');
+          playBtn.classList.add('fa-pause-circle');
+        } else {
+          audio.pause();
+          playBtn.classList.remove('fa-pause-circle');
+          playBtn.classList.add('fa-play-circle');
+        }
+        playing = !playing;
+      });
+      audio.addEventListener('ended', () => {
+        playBtn.classList.remove('fa-pause-circle');
+        playBtn.classList.add('fa-play-circle');
+        playing = false;
+      });
+    } else {
+      playBtn.addEventListener('click', () => {
+        alert('This track does not have an audio preview 😥, try another one');
+      });
+    }
   },
-  hideModal: () => document.getElementById('modal')?.remove(),
+  hideModal: () => {
+    modalActive = false;
+    document.getElementById('modal')?.remove();
+  },
 };
