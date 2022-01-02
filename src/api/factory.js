@@ -2,7 +2,7 @@ export default ({ credentials, fetch }) => {
   credentials.access_token = 'BQD81oYEnQ3ZhNT4A9q89jR6OW3a6f4h_sq4g6U8x4WqrkmGJAb--OepFWHlLVwYAHDB0H2JqRmiNawazis';
 
   const involvementBaseURL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';
-  const appId = 'oM0i9Hfjd7ZwqdP4izVj';
+  const appId = credentials.involvement_app_id;
 
   const headers = {
     Authorization: '', // NOTE: can't use spotify api until Auth header is initialized

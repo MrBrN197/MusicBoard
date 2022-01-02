@@ -19,7 +19,11 @@ module.exports = {
       template: './src/template.html',
     }),
     new FaviconsWebpackPlugin('./src/assets/images/logo.png'),
-    new webpack.EnvironmentPlugin(['CLIENT_ID', 'CLIENT_SECRET']),
+    new webpack.EnvironmentPlugin([
+      'CLIENT_ID', 
+      'CLIENT_SECRET',
+      'INVOLVEMENT_APP_ID',
+  ]),
   ],
   module: {
     rules: [
