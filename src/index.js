@@ -5,12 +5,12 @@ import countTotalItems from './countTotalItems.js';
 
 const populateList = (item) => {
   const itemsContainer = document.getElementById('items-container');
-  const div = document.createElement('DIV');
-  div.setAttribute('class', 'item-container');
+  const itemContainerDiv = document.createElement('DIV');
+  itemContainerDiv.setAttribute('class', 'item-container');
   const photo = document.createElement('IMG');
   photo.setAttribute('src', item.image);
   photo.setAttribute('class', 'album-photo');
-  div.appendChild(photo);
+  itemContainerDiv.appendChild(photo);
   const heart = document.createElement('SPAN');
   const likes = document.createElement('P');
   heart.innerHTML = '❤';
@@ -20,11 +20,18 @@ const populateList = (item) => {
     const newLikes = await API.getLikesFor(item.id);
     likes.innerHTML = `${newLikes} likes`;
   });
-  const title = document.createElement('P');
+  // const title = document.createElement('P');
   const titleText = document.createTextNode(item.artist);
-  title.appendChild(titleText);
-  title.appendChild(heart);
+  // title.appendChild(titleText);
+  // title.appendChild(heart);
   likes.innerHTML = `${item.likes} likes`;
+
+  const contentContainer = document.createElement('div');
+  const textContent = document.createElement('div');
+  textContent.append(titleText, likes);
+  contentContainer.classList.add('content');
+  contentContainer.append(textContent, heart);
+
   const comments = document.createElement('BUTTON');
   comments.setAttribute('id', 'comments-button');
   comments.textContent = 'Comments';
@@ -34,10 +41,9 @@ const populateList = (item) => {
     id: item.id,
     album_name: item.album_name,
   }));
-  div.appendChild(title);
-  div.appendChild(likes);
-  div.appendChild(comments);
-  itemsContainer.appendChild(div);
+  itemContainerDiv.appendChild(contentContainer);
+  itemContainerDiv.appendChild(comments);
+  itemsContainer.appendChild(itemContainerDiv);
 };
 
 const main = async () => {

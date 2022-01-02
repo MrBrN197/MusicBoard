@@ -55,7 +55,7 @@ header {
   font-size: large;
   background-color: rgb(240, 95, 95);
   padding: 8px;
-  border-radius: 6px;
+  // border-radius: 6px;
   outline: lightseagreen;
   border: none;
   transition: background-color 1s, font-weight 0.5s;
@@ -95,6 +95,10 @@ nav li a:hover {
 }
 
 .item-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  // align-items: center;
   margin-left: auto;
   margin-right: auto;
   margin-top: 40px;
@@ -109,12 +113,17 @@ nav li a:hover {
   box-shadow: 2px 2px 27px -3px rgba(255, 69, 69, 0.84);
 }
 
+.item-container .content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4rem 1rem;
+}
+
 .item-container p {
-  padding-right: 10%;
-  padding-left: 10%;
   font-size: 1.3rem;
-  margin-top: 5px;
   font-family: Caveat, sans-serif;
+  line-height: 2em;
 }
 
 .album-photo,
