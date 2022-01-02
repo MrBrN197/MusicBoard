@@ -2,6 +2,8 @@
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const webpack = require('webpack');
+require('dotenv').config();
 
 module.exports = {
   mode: 'development',
@@ -17,6 +19,11 @@ module.exports = {
       template: './src/template.html',
     }),
     new FaviconsWebpackPlugin('./src/assets/images/logo.png'),
+    new webpack.EnvironmentPlugin([
+      'CLIENT_ID', 
+      'CLIENT_SECRET',
+      'INVOLVEMENT_APP_ID',
+  ]),
   ],
   module: {
     rules: [
@@ -42,7 +49,7 @@ module.exports = {
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
-       type: 'asset/resource',
+        type: 'asset/resource',
       },
     ],
   },
