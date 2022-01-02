@@ -7,6 +7,8 @@ This is a website that shows the trending Music Albums by using the Spotify API 
 <img src="./preview_images/image3.png" width="220">
 <img src="./preview_images/desktop-preview.png" width="700">
 
+## 🔗 [Live Link](https://music-board.vercel.app/)
+
 ## Built With
 
 - JavaScript
