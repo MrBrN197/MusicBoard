@@ -47,5 +47,8 @@
   "bugs": {
     "url": "https://github.com/MrBrN197/MusicBoard/issues"
   },
-  "homepage": "https://github.com/MrBrN197/MusicBoard#readme"
+  "homepage": "https://github.com/MrBrN197/MusicBoard#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0"
+  }
 }

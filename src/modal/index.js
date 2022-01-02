@@ -79,7 +79,6 @@ export default {
 
     // Fetch preview audio
     const albumDetails = await API.getAlbum(id);
-    console.log(albumDetails.preview_url);
     const playBtn = modal.querySelector('.play-btn i');
     if (albumDetails.preview_url) {
       const audio = new Audio(albumDetails.preview_url);

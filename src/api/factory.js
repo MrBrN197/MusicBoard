@@ -1,8 +1,8 @@
-export default ({ credentials, fauxFetch: fetch }) => {
+export default ({ credentials, fetch }) => {
   credentials.access_token = 'BQD81oYEnQ3ZhNT4A9q89jR6OW3a6f4h_sq4g6U8x4WqrkmGJAb--OepFWHlLVwYAHDB0H2JqRmiNawazis';
 
   const involvementBaseURL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';
-  const appId = 'oM0i9Hfjd7ZwqdP4izVj';
+  const appId = credentials.involvement_app_id;
 
   const headers = {
     Authorization: '', // NOTE: can't use spotify api until Auth header is initialized
@@ -33,8 +33,6 @@ export default ({ credentials, fauxFetch: fetch }) => {
       const data = await response.json();
 
       const allAlbumLikes = await this.getAllLikes();
-      console.log('allAlbumLikes:', allAlbumLikes);
-
       return data.albums.items.map((item) => {
         // console.log('item:', item);
         const artist = item.artists.map((artist) => artist.name).join(', ');
@@ -113,7 +111,6 @@ export default ({ credentials, fauxFetch: fetch }) => {
     async getAlbum(id) {
       const response = await fetch(`https://api.spotify.com/v1/albums/${id}`, { headers });
       const data = await response.json();
-      console.log('DATA:@, ', data);
       return {
         preview_url: data.tracks.items.find((x) => x.preview_url)?.preview_url,
       };
